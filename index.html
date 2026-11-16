@@ -3,30 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feliz cumpleaños Jhanely</title>
+<title>Para Jhanely ❤️</title>
+
 <style>
 body {
-  background: linear-gradient(135deg, #ffd1dc, #e6ccff);
-  font-family: Georgia, serif;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg,#ffc1d6,#d9b8ff);
+  font-family: Georgia,serif;
   text-align: center;
-  padding: 25px;
-  color: #713b70;
+  color: #9b3674;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
-.carta {
+
+.contenedor { width: 100%; max-width: 420px; }
+
+h2 { color: #a83275; }
+
+.sobre {
+  position: relative;
+  width: 260px;
+  height: 170px;
+  margin: 65px auto 25px;
+  background: #ff82ad;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px #a65c8870;
+}
+
+.sobre::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-left: 130px solid #ffb0ca;
+  border-right: 130px solid #ffb0ca;
+  border-top: 95px solid transparent;
+  z-index: 3;
+}
+
+.tapa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 130px solid transparent;
+  border-right: 130px solid transparent;
+  border-top: 100px solid #e95791;
+  transform-origin: top;
+  transition: transform 1s;
+  z-index: 4;
+}
+
+.corazon {
+  position: absolute;
+  top: 65px;
+  left: 110px;
+  font-size: 42px;
+  z-index: 5;
+}
+
+.sobre.abierto .tapa {
+  transform: rotateX(180deg);
+}
+
+#invitacion {
+  transition: opacity .7s;
+}
+
+#carta {
+  display: none;
   background: white;
-  padding: 30px;
+  padding: 28px;
   border-radius: 20px;
-  max-width: 500px;
-  margin: 30px auto;
-  box-shadow: 0 5px 20px #b58bb5;
+  box-shadow: 0 5px 25px #9b367755;
+  animation: aparecer 1s ease;
 }
-h1 { color: #d64b91; }
-p { font-size: 18px; line-height: 1.7; }
-.firma { font-weight: bold; font-size: 23px; }
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#carta h1 { color: #e34d91; }
+#carta p { font-size: 17px; line-height: 1.7; }
+.firma { font-size: 24px; font-weight: bold; }
+
+button {
+  background: #e34d91;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 13px 25px;
+  font-size: 17px;
+  cursor: pointer;
+}
 </style>
 </head>
+
 <body>
-<div class="carta">
+<div class="contenedor">
+
+<div id="invitacion">
+<h2>💌 Tienes una sorpresa, Jhanely</h2>
+<div class="sobre" id="sobre" onclick="abrir()">
+<div class="tapa"></div>
+<div class="corazon">❤️</div>
+</div>
+<button onclick="abrir()">Toca para abrir 💗</button>
+</div>
+
+<div id="carta">
 <h1>🎂 ¡Feliz cumpleaños, Jhanely! 🎂</h1>
 <p>Hoy es un día muy especial y quiero desearte un cumpleaños lleno de alegría, amor y momentos inolvidables.</p>
 <p>Que todos tus sueños se hagan realidad y que nunca te falten motivos para sonreír. Espero que disfrutes muchísimo tu día.</p>
@@ -34,5 +126,22 @@ p { font-size: 18px; line-height: 1.7; }
 <p>Con mucho cariño,</p>
 <p class="firma">Franks ❤️</p>
 </div>
+
+</div>
+
+<script>
+let abierta = false;
+
+function abrir() {
+  if (abierta) return;
+  abierta = true;
+  document.getElementById("sobre").classList.add("abierto");
+
+  setTimeout(() => {
+    document.getElementById("invitacion").style.display = "none";
+    document.getElementById("carta").style.display = "block";
+  }, 1100);
+}
+</script>
 </body>
-</html>
+</html> 
